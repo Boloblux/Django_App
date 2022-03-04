@@ -1,0 +1,30 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <title>App</title>
+  <link rel="stylesheet" href="{% static 'css/style.css' %}">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
+  </style>
+</head>
+<body>
+
+    <div class="update">
+        <!-- Create a Form -->
+        <form method="POST">
+            <!-- Security token by Django -->
+            {% csrf_token %}
+     
+            <!-- form as paragraph -->
+            {{ form.as_p }}
+     
+            <input type="submit" value="Update">
+        </form>
+
+        <a href="/app/list">Return to list </a>
+    </div>
+    
+</body>
+</html>

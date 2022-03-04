@@ -1,0 +1,54 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <title>App</title>
+  <link rel="stylesheet" href="{% static 'css/style.css' %}">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
+  </style>
+</head>
+<body>
+
+    <div class="main">
+ 
+        {% for data in dataset %}
+        {% if data.quantity > 0 %}
+     
+        <div class="card">
+          <div class="cardcontent">
+            <img src="{{ data.imagelink }}" width="250px">
+            <h2>{{ data.title }}</h2>
+            <p>{{ data.description }}
+              <br/>
+              <br/>
+              Quantity : {{ data.quantity }}
+              <br/>
+              Price : {{ data.price }}$
+            </p>
+          </div>
+          <div>
+            <a href="/app/{{data.id}}">Buy</a>   <a href="/app/{{data.id}}/update">Update</a>   <a href="/app/{{data.id}}/delete">Delete</a>
+          </div>
+        </div>      
+        {% endif %}
+        {% endfor %}
+     
+    </div>
+
+    <br/><br/>
+
+    <form method="POST" enctype="multipart/form-data">
+ 
+      <!-- Security token -->
+      {% csrf_token %}
+   
+      <!-- Using the formset -->
+      {{ form.as_p }}
+       
+      <input type="submit" value="Submit">
+  </form>
+    
+</body>
+</html>

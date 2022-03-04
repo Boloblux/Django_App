@@ -1,0 +1,31 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <title>App</title>
+  <link rel="stylesheet" href="{% static 'css/style.css' %}">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
+  </style>
+</head>
+<body>
+    <div class="main">
+      <div class="card">
+        <div class="cardcontent">
+          <img src="{{ data.imagelink }}" width="250px">
+          <h2>{{ data.title }}</h2>
+          <p>{{ data.description }}
+            <br/>
+            <br/>
+            Quantity : {{ data.quantity }}
+            <br/>
+            Price : {{ data.price }}$
+          </p>
+        </div>
+        <a href="/app/list">Return to list </a>
+      </div>   
+  </div>
+
+</body>
+</html>
